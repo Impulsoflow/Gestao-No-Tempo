@@ -621,6 +621,19 @@
   let emailSendAttempts = 0;
   const MAX_EMAIL_ATTEMPTS = 3;
 
+  // Função para padronizar textos em Title Case (Primeiras Letras Maiúsculas)
+  function toTitleCase(str) {
+    if (!str) return "";
+    return str.toLowerCase().split(' ').map(function(word) {
+      if (word.length < 3 && word !== "da" && word !== "de" && word !== "do" && word !== "das" && word !== "dos") {
+         return word.charAt(0).toUpperCase() + word.slice(1);
+      } else if (word === "da" || word === "de" || word === "do" || word === "das" || word === "dos") {
+         return word;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+  }
+
   //
   // 🎨 NOVO GERADOR DE GRÁFICO IDÊNTICO AO RESULTADO (FLAT PIE CHART)
   //
@@ -781,6 +794,10 @@
     
     const { prettyData, totals, percentages, energyLeak, triadChartImg, idealChartImg } = data;
 
+    // Garante que o nome fique em Title Case (Primeiras maiúsculas)
+    const formattedName = toTitleCase(sanitizeInput(prettyData.nome));
+    const formattedProf = toTitleCase(sanitizeInput(prettyData.profissao));
+
     // Paleta Premium (RGB)
     const colorNavy = [11, 42, 82];      // #0B2A52
     const colorBlue = [11, 99, 206];     // #0B63CE
@@ -807,17 +824,18 @@
     doc.setTextColor(255, 255, 255);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
-    doc.text("Instituto Impulso Coaching de Liderança", margin, 15);
+    doc.text("Instituto Impulso Coaching de Liderança", margin, 16);
     
-    // AQUI ESTÁ A INCLUSÃO DO NOME NO CABEÇALHO (Em itálico e menor, abaixo do título principal)
-    doc.setFont("helvetica", "italic");
-    doc.setFontSize(14);
-    doc.text(`Relatório da Gestão no Tempo de ${sanitizeInput(prettyData.nome)}`, margin, 24);
+    // NOME NO CABEÇALHO (Em Title Case, ajustado)
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(220, 235, 255);
+    doc.text(`Relatório da Gestão no Tempo de ${formattedName}`, margin, 25);
     
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(255, 255, 255);
-    doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 24, { align: 'right' });
+    doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 25, { align: 'right' });
     
     y = 50;
 
@@ -831,7 +849,8 @@
       doc.setLineWidth(1.2);
       doc.line(margin, y - 5, margin, y + 3);
       
-      doc.setFont("helvetica", "bold");
+      // ALTERAÇÃO AQUI: Retirado o "bold" e adicionado "normal" para os títulos
+      doc.setFont("helvetica", "normal"); 
       doc.setFontSize(11);
       doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
       doc.text(text.toUpperCase(), margin + 4, y + 1);
@@ -875,9 +894,9 @@
 
     // -- SEÇÃO 1: Dados do Participante --
     addSectionTitle("1. Participante");
-    addDataRow("Nome", sanitizeInput(prettyData.nome), "Idade", sanitizeInput(prettyData.idade) + " anos");
-    addDataRow("Cargo", sanitizeInput(prettyData.profissao), "Formação", sanitizeInput(prettyData.escolaridade));
-    addDataRow("E-mail", sanitizeInput(prettyData.email), "WhatsApp", sanitizeInput(prettyData.whatsapp));
+    addDataRow("Nome", formattedName, "Idade", sanitizeInput(prettyData.idade) + " anos");
+    addDataRow("Cargo", formattedProf, "Formação", sanitizeInput(prettyData.escolaridade));
+    addDataRow("E-mail", sanitizeInput(prettyData.email).toLowerCase(), "WhatsApp", sanitizeInput(prettyData.whatsapp));
     
     // -- SEÇÃO 2: Métricas --
     y += 4;
@@ -888,8 +907,8 @@
     doc.setTextColor(colorText[0], colorText[1], colorText[2]);
     doc.text("Distribuição do Tempo:", margin, y);
     y += 6;
-    addDataRow("Importância (B)", `${Number(percentages.B).toFixed(1)}%`, "Urgência (C)", `${Number(percentages.C).toFixed(1)}%`);
-    addDataRow("Circunstância (A)",  `${Number(percentages.A).toFixed(1)}%`, "Total de Pontos", totals.General);
+    addDataRow("Importância", `${Number(percentages.B).toFixed(1)}%`, "Urgência", `${Number(percentages.C).toFixed(1)}%`);
+    addDataRow("Circunstância",  `${Number(percentages.A).toFixed(1)}%`, "Total de Pontos", totals.General);
     
     y += 4;
     doc.setFillColor(254, 242, 242); 
@@ -905,7 +924,7 @@
 
     // -- SEÇÃO 3: Diagnóstico Comportamental --
     const prof = triadPickProfile(Number(percentages.A), Number(percentages.B), Number(percentages.C));
-    addSectionTitle("3. Diagnóstico de Comparação do Perfil de Gestão");
+    addSectionTitle("3. Diagnóstico de Comparação do Perfil");
     
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
@@ -1010,7 +1029,6 @@
     profilesData.forEach(p => {
       let textH = 6; 
       
-      // TAMANHO GRANDE DO GRÁFICO (para igualar à percepção visual do resultado)
       const chartSize = 65; 
       const textX = margin + chartSize + 15;
       const textColW = contentW - chartSize - 20; 
@@ -1040,7 +1058,6 @@
       doc.rect(margin, boxY, 3, cardHeight, 'F');
       
       if (p.chartBase64) {
-        // Alinhamento perfeito do gráfico dentro do card
         const chartY = boxY + (cardHeight / 2) - (chartSize / 2);
         doc.addImage(p.chartBase64, "PNG", margin + 8, chartY, chartSize, chartSize);
       }
@@ -1091,7 +1108,7 @@
       doc.text(`Página ${i} de ${totalPages}`, pageW - margin, pageH - 8, { align: 'right' });
     }
 
-    const safeName = sanitizeInput(prettyData.nome).replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
+    const safeName = formattedName.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
     const pdfFileName = `Relatorio_Executivo_Triade_${safeName}.pdf`;
     return { doc, pdfFileName };
   }
@@ -1411,7 +1428,9 @@
     if(energiaPerdida < 0) energiaPerdida = 0;
     const energyLeak = energiaPerdida.toFixed(1) + "%";
 
-    document.getElementById("result-title").textContent = `Relatório Executivo de ${sanitizeInput(elName.value)}`;
+    const formattedNameResult = toTitleCase(sanitizeInput(elName.value));
+
+    document.getElementById("result-title").textContent = `Relatório Executivo de ${formattedNameResult}`;
     document.getElementById("percentA").textContent = `${percentages.A}%`;
     document.getElementById("percentB").textContent = `${percentages.B}%`;
     document.getElementById("percentC").textContent = `${percentages.C}%`;
