@@ -1404,7 +1404,7 @@
       data: {
         labels: ["Circunstância", "Importância", "Urgência"],
         datasets: [{ data: [10, 70, 20], backgroundColor: ["#FFD700", "#0b63ce", "#dc2626"], borderColor: "#ffffff", borderWidth: 2 }]
-      }, options: commonOptions("Tríade Ideal (Benchmark)")
+      }, options: commonOptions("Tríade Ideal")
     });
   }
 
@@ -1422,7 +1422,7 @@
 
     const formattedNameResult = toTitleCase(sanitizeInput(elName.value));
 
-    document.getElementById("result-title").textContent = `Relatório Executivo de ${formattedNameResult}`;
+    document.getElementById("result-title").textContent = `Relatório de ${formattedNameResult}`;
     document.getElementById("percentA").textContent = `${percentages.A}%`;
     document.getElementById("percentB").textContent = `${percentages.B}%`;
     document.getElementById("percentC").textContent = `${percentages.C}%`;
