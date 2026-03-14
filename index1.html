@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapeamento Gestão No Tempo - Instituto Impulso Coaching de Liderança</title>
+  <title>Mapeamento Gestão No Tempo - Instituto Impulso</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -592,7 +592,7 @@
               <p class="desc" id="profile-desc"></p>
             </div>
             <div class="nav" style="margin-top:14px; display: none;" id="btn-back-wrap">
-              <button id="btn-back-quiz" class="btn btn-ghost" type="button">Voltar e revisar</button>
+              <button id="btn-back-quiz" class="btn btn-ghost" type="button">Fazer Nova Análise</button>
             </div>
           </div>
           <div>
@@ -639,7 +639,7 @@
   function toTitleCase(str) {
     if (!str) return "";
     return str.toLowerCase().split(' ').map(function(word) {
-      if (word.length &lt; 3 && word !== "da" && word !== "de" && word !== "do" && word !== "das" && word !== "dos") {
+      if (word.length < 3 && word !== "da" && word !== "de" && word !== "do" && word !== "das" && word !== "dos") {
          return word.charAt(0).toUpperCase() + word.slice(1);
       } else if (word === "da" || word === "de" || word === "do" || word === "das" || word === "dos") {
          return word;
@@ -665,7 +665,7 @@
     let startAngle = -Math.PI / 2;
     
     data.forEach(d => {
-      if(d.val &lt;= 0) return;
+      if(d.val <= 0) return;
       const sliceAngle = (d.val / 100) * 2 * Math.PI;
       const endAngle = startAngle + sliceAngle;
       
@@ -723,7 +723,7 @@
   function triadPickProfile(A, B, C){
     const a = Number(A), b = Number(B), c = Number(C);
     let prof = {};
-    if (a &lt;= 20 && c &lt;= 20 && b >= 60) {
+    if (a <= 20 && c <= 20 && b >= 60) {
       prof = { 
         nome: "Super Poderoso Thor", 
         subtitle: "Importante: Dominante | O perfil da Alta Performance Excepcional",
@@ -731,7 +731,7 @@
         texto: "Representa o mais alto nível de gestão do tempo. Essa maestria é resultado de hábitos deliberados e visão cristalina de futuro. Você não apenas resolve problemas, você os antecipa e neutraliza na raiz. Domina a complexa arte de dizer 'não' ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta.\n\nA circunstância em sua rotina existe apenas como um descanso intencional, servindo para alimentar seu estado de Flow e traduzindo-se em excelência, foco e equilíbrio vital.\n\nPróximo Passo Estratégico: Manter a blindagem contra as interrupções externas e focar em delegação avançada." 
       };
     }
-    else if (b >= 55 && a >= 30 && c &lt;= 20) {
+    else if (b >= 55 && a >= 30 && c <= 20) {
       prof = { 
         nome: "Homem de Ferro", 
         subtitle: "Importante: Predominante | Inteligência focada em resultados",
@@ -739,7 +739,7 @@
         texto: "Vive prioritariamente na esfera do Importante. Você compreendeu que trabalhar de forma inteligente é superior a apenas trabalhar duro. Antecipa problemas de forma cirúrgica antes que se tornem urgências, mantendo inteligência emocional e calma sob pressão. Este padrão gera resultados impressionantes e um senso claro de propósito e pertencimento.\n\nPonto de Atenção Crítico: O seu principal risco é a infiltração gradual da esfera circunstancial. O excesso de lazer desestruturado ou redes sociais pode erodir seu foco estratégico lentamente, sem que você perceba."
       };
     }
-    else if (c >= 25 && c &lt;= 45 && a >= 25 && a &lt;= 45 && b &lt;= 40) {
+    else if (c >= 25 && c <= 45 && a >= 25 && a <= 45 && b <= 40) {
       prof = { 
         nome: "O Equilibrista", 
         subtitle: "Cabo de guerra entre as urgências e o cansaço",
@@ -763,7 +763,7 @@
         texto: "O profissional que aparenta estar sempre superocupado, vivendo do pico de adrenalina das crises e apagando incêndios na última hora. Frequentemente recebe elogios por 'salvar o dia', o que é uma armadilha, pois reforça neurobiologicamente esse ciclo exaustivo. Com a agenda dominada por reações externas, a capacidade de pensar de forma estratégica, inovar ou entrar em Flow despenca.\n\nRiscos e Consequências Críticas:\n• Risco iminente de Síndrome de Burnout e exaustão crônica sistêmica.\n• Sensação persistente de insegurança ('o que vai explodir hoje?').\n• Queda severa na qualidade das entregas, compensada por esforço heroico e insustentável."
       };
     }
-    // SUBSTITUIÇÃO AQUI: Quando Importância (B) é maior, forçamos o perfil Thor Super Poderoso
+    // AQUI ESTÁ A ALTERAÇÃO SOLICITADA
     else if(b >= a && b >= c) {
       prof = { 
         nome: "Super Poderoso Thor", 
@@ -968,7 +968,7 @@
     doc.setTextColor(colorBlue[0], colorBlue[1], colorBlue[2]);
     doc.text("O Poder de Organizar Bem o Seu Tempo", margin, y);
     y += 7;
-    const textoComparativo = "Quando você compara como usa seu tempo hoje com o que seria o ideal, você não está apenas olhando para a sua agenda. Na verdade, está enxergando como sua mente funciona e para onde sua energia está indo. Existe um modelo considerado ideal para pessoas que produzem muito bem: 70% do tempo em coisas importantes, 20% em coisas urgentes e 10% em situações circunstanciais (interrupções, distrações e tarefas que aparecem de repente). Esse equilíbrio ajuda o cérebro a funcionar melhor. Quando a maior parte do tempo é dedicada ao que realmente importa, a pessoa entra em um estado de alta produtividade, conhecido como estado de flow — quando o trabalho flui, a mente fica focada e as coisas rendem mais.\nPor outro lado, Quando vivemos apagando incêndios (só resolvendo urgências) ou gastando tempo com distrações, o cérebro entra em modo de estresse. Isso aumenta o cortisol, o hormônio do estresse, e nos prende em pequenas recompensas rápidas que tiram o foco do que realmente gera resultados. Ao perceber a diferença entre como você usa seu tempo hoje e como poderia usar, fica mais fácil identificar onde sua energia está sendo desperdiçada.\nQuando você começa, pouco a pouco, a colocar mais tempo nas coisas realmente importantes, vários benefícios aparecem: você melhora seu equilíbrio emocional; passa a enxergar melhor o todo das situações; toma decisões mais claras; reduz o risco de esgotamento e burnout.\nO objetivo dessa análise não é virar um robô perfeito. É simplesmente desenvolver consciência e intenção. Cada pedacinho de tempo que você tira das distrações ou das urgências e coloca em coisas realmente importantes aumenta muito sua capacidade de: liderar pessoas; tomar decisões difíceis; criar soluções novas; construir resultados duradouros na carreira e na vida.";      
+    const textoComparativo = "Quando você compara como usa seu tempo hoje com o que seria o ideal, você não está apenas olhando para a sua agenda. Na verdade, está enxergando como sua mente funciona e para onde sua energia está indo. Existe um modelo considerado ideal para pessoas que produzem muito bem: 70% do tempo em coisas importantes, 20% em coisas urgentes e 10% em situações circunstanciais (interrupções, distrações e tarefas que aparecem de repente). Esse equilíbrio ajuda o cérebro a funcionar melhor. Quando a maior parte do tempo é dedicada ao que realmente importa, a pessoa entra em um estado de alta produtividade, conhecido como estado de flow — quando o trabalho flui, a mente fica focada e as coisas rendem mais.\nPor outro lado, quando vivemos apagando incêndios (só resolvendo urgências) ou gastando tempo com distrações, o cérebro entra em modo de estresse. Isso aumenta o cortisol, o hormônio do estresse, e nos prende em pequenas recompensas rápidas que tiram o foco do que realmente gera resultados. Ao perceber a diferença entre como você usa seu tempo hoje e como poderia usar, fica mais fácil identificar onde sua energia está sendo desperdiçada.\nQuando você começa, pouco a pouco, a colocar mais tempo nas coisas realmente importantes, vários benefícios aparecem: você melhora seu equilíbrio emocional; passa a enxergar melhor o todo das situações; toma decisões mais claras; reduz o risco de esgotamento e burnout.\nO objetivo dessa análise não é virar um robô perfeito. É simplesmente desenvolver consciência e intenção. Cada pedacinho de tempo que você tira das distrações ou das urgências e coloca em coisas realmente importantes aumenta muito sua capacidade de: liderar pessoas; tomar decisões difíceis; criar soluções novas; construir resultados duradouros na carreira e na vida.";      
       
     addParagraph(textoComparativo, 10.5, 6);
     forceNewPage();
@@ -1059,7 +1059,7 @@
       y = boxY + cardHeight + 6; 
     });
     const totalPages = doc.internal.getNumberOfPages();
-    for (let i = 1; i &lt;= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i);
       doc.setDrawColor(200, 210, 220);
       doc.setLineWidth(0.5);
@@ -1131,7 +1131,7 @@
     } catch (e) {
       console.error(e);
       emailSendAttempts++;
-      if (emailSendAttempts &lt; MAX_EMAIL_ATTEMPTS) {
+      if (emailSendAttempts < MAX_EMAIL_ATTEMPTS) {
         setAutoSendStatus(`⚠️ Conectando servidor de alta performance (${emailSendAttempts}/${MAX_EMAIL_ATTEMPTS})...`, "error");
         await wait(2500);
         await autoSendWithPdf();
@@ -1210,7 +1210,7 @@
     const okWhatsapp = whatsapp.length >= 14; 
     const okEmail = validateEmail(email);
     const okProf = !!prof;
-    const okAge = age.length > 0 && Number(age) >= 10 && Number(age) &lt;= 99;
+    const okAge = age.length > 0 && Number(age) >= 10 && Number(age) <= 99;
     const okEscolaridade = !!escolaridade;
     document.getElementById("name-error").style.display = okName ? "none" : "block";
     document.getElementById("whatsapp-error").style.display = okWhatsapp ? "none" : "block";
@@ -1274,7 +1274,7 @@
     });
     updateProgressUI();
     if(autoAdvanceTimeout) clearTimeout(autoAdvanceTimeout);
-    if(currentIndex &lt; 17) {
+    if(currentIndex < 17) {
       autoAdvanceTimeout = setTimeout(() => {
         currentIndex++;
         renderQuestion();
@@ -1294,7 +1294,7 @@
   });
   function computeTotals(){
     let totals = { A: 0, B: 0, C: 0, General: 0 };
-    for(let i=1; i&lt;=18; i++){
+    for(let i=1; i<=18; i++){
       const value = Number(answers[i-1]);
       if (circumstance.includes(i)) totals.A += value;
       else if (importance.includes(i)) totals.B += value;
@@ -1355,7 +1355,7 @@
     const percentages = computePercentages(totals);
     
     let energiaPerdida = 70 - percentages.B;
-    if(energiaPerdida &lt; 0) energiaPerdida = 0;
+    if(energiaPerdida < 0) energiaPerdida = 0;
     const energyLeak = energiaPerdida.toFixed(1) + "%";
     const formattedNameResult = toTitleCase(sanitizeInput(elName.value));
     document.getElementById("result-title").textContent = `Relatório Executivo de ${formattedNameResult}`;
@@ -1392,11 +1392,44 @@
       setTimeout(() => { autoSendWithPdf(); }, 800);
     }
   });
-  btnBackQuiz.addEventListener("click", () => {
-    showStep(stepQuiz);
-    renderQuestion();
-    updateProgressUI();
-  });
+
+  // Lógica para recomeçar o teste limpando todos os dados
+  function restartTest() {
+    // 1. Limpa os dados de entrada
+    document.getElementById("name").value = "";
+    document.getElementById("whatsapp").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("profession").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("escolaridade").value = "";
+    
+    // 2. Reseta as respostas e variáveis de controle
+    answers.fill(null);
+    currentIndex = 0;
+    autoSendDone = false;
+    emailSendAttempts = 0;
+    window._triadeData = null;
+
+    // 3. Esconde mensagens de sucesso/erro anteriores
+    document.getElementById("final-success-message").style.display = "none";
+    document.getElementById("auto-send-status").textContent = "";
+
+    // 4. Volta para a primeira tela
+    showStep(stepIntro);
+    
+    // 5. Garante que os botões de avançar estejam no estado correto
+    document.getElementById("btn-next").style.display = "none";
+  }
+
+  // Modificando o botão "Voltar e revisar" para atuar como "Recomeçar"
+  const btnRestart = document.getElementById("btn-back-quiz");
+  if(btnRestart) {
+    // Removemos os eventos antigos clonando o botão
+    const newBtn = btnRestart.cloneNode(true);
+    btnRestart.parentNode.replaceChild(newBtn, btnRestart);
+    newBtn.addEventListener("click", restartTest);
+  }
+
   renderQuestion();
   updateProgressUI();
   </script>
