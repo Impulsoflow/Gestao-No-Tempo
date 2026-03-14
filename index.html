@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapeamento Gestão No Tempo - Instituto Impulso</title>
+  <title>Mapeamento Gestão No Tempo - Instituto Impulso Coaching de Liderança</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -592,7 +592,7 @@
               <p class="desc" id="profile-desc"></p>
             </div>
             <div class="nav" style="margin-top:14px; display: none;" id="btn-back-wrap">
-              <button id="btn-back-quiz" class="btn btn-ghost" type="button">Voltar e revisar</button>
+              <button id="btn-back-quiz" class="btn btn-ghost" type="button">Fazer Nova Análise</button>
             </div>
           </div>
           <div>
@@ -763,8 +763,14 @@
         texto: "O profissional que aparenta estar sempre superocupado, vivendo do pico de adrenalina das crises e apagando incêndios na última hora. Frequentemente recebe elogios por 'salvar o dia', o que é uma armadilha, pois reforça neurobiologicamente esse ciclo exaustivo. Com a agenda dominada por reações externas, a capacidade de pensar de forma estratégica, inovar ou entrar em Flow despenca.\n\nRiscos e Consequências Críticas:\n• Risco iminente de Síndrome de Burnout e exaustão crônica sistêmica.\n• Sensação persistente de insegurança ('o que vai explodir hoje?').\n• Queda severa na qualidade das entregas, compensada por esforço heroico e insustentável."
       };
     }
+    // AQUI ESTÁ A ALTERAÇÃO SOLICITADA
     else if(b >= a && b >= c) {
-      prof = { nome: "Predominância em Importância (B)", subtitle: "Foco no que gera valor", desc: "Prioriza ações estruturadas.", texto: "Sua gestão tende a priorizar atividades relevantes que trazem resultados consistentes no longo prazo, mantendo o estresse sob controle." };
+      prof = { 
+        nome: "Super Poderoso Thor", 
+        subtitle: "Importante: Dominante | O perfil da Alta Performance Excepcional",
+        desc: "Sinônimo de preparo, planejamento estratégico e alto valor agregado.",
+        texto: "Representa o mais alto nível de gestão do tempo. Essa maestria é resultado de hábitos deliberados e visão cristalina de futuro. Você não apenas resolve problemas, você os antecipa e neutraliza na raiz. Domina a complexa arte de dizer 'não' ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta.\n\nA circunstância em sua rotina existe apenas como um descanso intencional, servindo para alimentar seu estado de Flow e traduzindo-se em excelência, foco e equilíbrio vital.\n\nPróximo Passo Estratégico: Manter a blindagem contra as interrupções externas e focar em delegação avançada." 
+      };
     }
     else if(c >= a && c >= b) {
       prof = { nome: "Predominância em Urgência (C)", subtitle: "Gestão reativa de tempo", desc: "Operação baseada em pressão constante.", texto: "Sua atuação no dia a dia ocorre em modo de crise, com prazos extremamente curtos. É essencial implementar governança de tempo urgente." };
@@ -905,7 +911,7 @@
     doc.roundedRect(margin, y, contentW, 10, 2, 2, "FD");
     
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
+    doc.setFontSize(15);
     doc.setTextColor(185, 28, 28); 
     doc.text(`ALERTA: Índice de Vazamento de Energia vital: ${energyLeak}`, margin + 5, y + 6.5);
     y += 16;
@@ -1070,7 +1076,7 @@
       doc.text(`Página ${i} de ${totalPages}`, pageW - margin, pageH - 8, { align: 'right' });
     }
     const safeName = formattedName.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
-    const pdfFileName = `Relatorio_Executivo_GestaoNoTempo_${safeName}.pdf`;
+    const pdfFileName = `GestaoNoTempo: ${safeName}.pdf`;
     return { doc, pdfFileName };
   }
   // 
@@ -1079,7 +1085,7 @@
   async function autoSendWithPdf() {
     if (autoSendInProgress || autoSendDone) return;
     autoSendInProgress = true;
-    setAutoSendStatus("⏳ Gerando relatório executivo e processando inteligência de dados...", "pending");
+    setAutoSendStatus("⏳ Gerando relatório e processando inteligência de dados...", "pending");
     
     try {
       const data = window._triadeData;
@@ -1352,7 +1358,7 @@
     if(energiaPerdida < 0) energiaPerdida = 0;
     const energyLeak = energiaPerdida.toFixed(1) + "%";
     const formattedNameResult = toTitleCase(sanitizeInput(elName.value));
-    document.getElementById("result-title").textContent = `Relatório Executivo de ${formattedNameResult}`;
+    document.getElementById("result-title").textContent = `Relatório Gestão no Tempo de ${formattedNameResult}`;
     document.getElementById("percentA").textContent = `${percentages.A}%`;
     document.getElementById("percentB").textContent = `${percentages.B}%`;
     document.getElementById("percentC").textContent = `${percentages.C}%`;
@@ -1386,11 +1392,44 @@
       setTimeout(() => { autoSendWithPdf(); }, 800);
     }
   });
-  btnBackQuiz.addEventListener("click", () => {
-    showStep(stepQuiz);
-    renderQuestion();
-    updateProgressUI();
-  });
+
+  // Lógica para recomeçar o teste limpando todos os dados
+  function restartTest() {
+    // 1. Limpa os dados de entrada
+    document.getElementById("name").value = "";
+    document.getElementById("whatsapp").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("profession").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("escolaridade").value = "";
+    
+    // 2. Reseta as respostas e variáveis de controle
+    answers.fill(null);
+    currentIndex = 0;
+    autoSendDone = false;
+    emailSendAttempts = 0;
+    window._triadeData = null;
+
+    // 3. Esconde mensagens de sucesso/erro anteriores
+    document.getElementById("final-success-message").style.display = "none";
+    document.getElementById("auto-send-status").textContent = "";
+
+    // 4. Volta para a primeira tela
+    showStep(stepIntro);
+    
+    // 5. Garante que os botões de avançar estejam no estado correto
+    document.getElementById("btn-next").style.display = "none";
+  }
+
+  // Modificando o botão "Voltar e revisar" para atuar como "Recomeçar"
+  const btnRestart = document.getElementById("btn-back-quiz");
+  if(btnRestart) {
+    // Removemos os eventos antigos clonando o botão
+    const newBtn = btnRestart.cloneNode(true);
+    btnRestart.parentNode.replaceChild(newBtn, btnRestart);
+    newBtn.addEventListener("click", restartTest);
+  }
+
   renderQuestion();
   updateProgressUI();
   </script>
