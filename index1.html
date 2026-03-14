@@ -911,7 +911,7 @@
     doc.roundedRect(margin, y, contentW, 10, 2, 2, "FD");
     
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
+    doc.setFontSize(15);
     doc.setTextColor(185, 28, 28); 
     doc.text(`ALERTA: Índice de Vazamento de Energia vital: ${energyLeak}`, margin + 5, y + 6.5);
     y += 16;
@@ -1076,7 +1076,7 @@
       doc.text(`Página ${i} de ${totalPages}`, pageW - margin, pageH - 8, { align: 'right' });
     }
     const safeName = formattedName.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
-    const pdfFileName = `Relatorio_Executivo_GestaoNoTempo_${safeName}.pdf`;
+    const pdfFileName = `GestaoNoTempo: ${safeName}.pdf`;
     return { doc, pdfFileName };
   }
   // 
@@ -1085,7 +1085,7 @@
   async function autoSendWithPdf() {
     if (autoSendInProgress || autoSendDone) return;
     autoSendInProgress = true;
-    setAutoSendStatus("⏳ Gerando relatório executivo e processando inteligência de dados...", "pending");
+    setAutoSendStatus("⏳ Gerando relatório e processando inteligência de dados...", "pending");
     
     try {
       const data = window._triadeData;
@@ -1358,7 +1358,7 @@
     if(energiaPerdida < 0) energiaPerdida = 0;
     const energyLeak = energiaPerdida.toFixed(1) + "%";
     const formattedNameResult = toTitleCase(sanitizeInput(elName.value));
-    document.getElementById("result-title").textContent = `Relatório Executivo de ${formattedNameResult}`;
+    document.getElementById("result-title").textContent = `Relatório Gestão no Tempo de ${formattedNameResult}`;
     document.getElementById("percentA").textContent = `${percentages.A}%`;
     document.getElementById("percentB").textContent = `${percentages.B}%`;
     document.getElementById("percentC").textContent = `${percentages.C}%`;
