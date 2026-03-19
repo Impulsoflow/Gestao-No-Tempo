@@ -1,0 +1,246 @@
+function buildGestaoNoTempoCoverBase64(nomeCliente) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 2480;
+  canvas.height = 3508;
+
+  const ctx = canvas.getContext("2d");
+
+  const W = canvas.width;
+  const H = canvas.height;
+
+  // Paleta da Impulso Coaching / PDF executivo
+  const navy = "#061f44";
+  const blue = "#0b63ce";
+  const cyan = "#38bdf8";
+  const light = "#f4f9ff";
+  const white = "#ffffff";
+  const silver = "#d7e7fb";
+  const gold = "#f5c542";
+  const red = "#dc2626";
+
+  // Fundo
+  const bgGradient = ctx.createLinearGradient(0, 0, 0, H);
+  bgGradient.addColorStop(0, navy);
+  bgGradient.addColorStop(0.55, "#08306b");
+  bgGradient.addColorStop(1, "#051733");
+  ctx.fillStyle = bgGradient;
+  ctx.fillRect(0, 0, W, H);
+
+  // Brilhos decorativos
+  function glow(x, y, r, color, alpha) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.globalAlpha = alpha;
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  glow(W * 0.18, H * 0.15, 280, cyan, 0.18);
+  glow(W * 0.84, H * 0.18, 220, gold, 0.12);
+  glow(W * 0.72, H * 0.82, 320, blue, 0.10);
+
+  // Faixas premium
+  const band = ctx.createLinearGradient(0, H * 0.08, W, H * 0.2);
+  band.addColorStop(0, "rgba(255,255,255,0.06)");
+  band.addColorStop(0.5, "rgba(56,189,248,0.12)");
+  band.addColorStop(1, "rgba(255,255,255,0.04)");
+  ctx.fillStyle = band;
+  ctx.fillRect(0, H * 0.08, W, H * 0.12);
+
+  // Moldura externa
+  ctx.strokeStyle = "rgba(255,255,255,0.20)";
+  ctx.lineWidth = 10;
+  ctx.strokeRect(60, 60, W - 120, H - 120);
+
+  // Elementos diagonais
+  ctx.save();
+  ctx.translate(W * 0.78, H * 0.2);
+  ctx.rotate(-0.35);
+  ctx.fillStyle = "rgba(255,255,255,0.06)";
+  ctx.fillRect(-520, -60, 1040, 120);
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(W * 0.18, H * 0.83);
+  ctx.rotate(-0.42);
+  ctx.fillStyle = "rgba(56,189,248,0.10)";
+  ctx.fillRect(-420, -50, 900, 100);
+  ctx.restore();
+
+  // Círculo decorativo do relógio
+  const cx = W * 0.73;
+  const cy = H * 0.34;
+  const clockR = 290;
+
+  const ring = ctx.createRadialGradient(cx, cy, 40, cx, cy, clockR + 30);
+  ring.addColorStop(0, "rgba(255,255,255,0.15)");
+  ring.addColorStop(0.7, "rgba(255,255,255,0.05)");
+  ring.addColorStop(1, "rgba(255,255,255,0)");
+  ctx.fillStyle = ring;
+  ctx.beginPath();
+  ctx.arc(cx, cy, clockR + 30, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Relógio
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx, cy, clockR, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(255,255,255,0.10)";
+  ctx.fill();
+  ctx.lineWidth = 14;
+  ctx.strokeStyle = "rgba(255,255,255,0.65)";
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, clockR - 26, 0, Math.PI * 2);
+  ctx.strokeStyle = "rgba(255,255,255,0.18)";
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Marcações do relógio
+  for (let i = 0; i < 12; i++) {
+    const a = (Math.PI * 2 / 12) * i - Math.PI / 2;
+    const r1 = clockR - 26;
+    const r2 = i % 3 === 0 ? clockR - 72 : clockR - 52;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1);
+    ctx.lineTo(cx + Math.cos(a) * r2, cy + Math.sin(a) * r2);
+    ctx.strokeStyle = i % 3 === 0 ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.45)";
+    ctx.lineWidth = i % 3 === 0 ? 8 : 4;
+    ctx.stroke();
+  }
+
+  // Ponteiros
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + Math.cos(-Math.PI / 2 + 0.55) * 125, cy + Math.sin(-Math.PI / 2 + 0.55) * 125);
+  ctx.strokeStyle = white;
+  ctx.lineWidth = 12;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + Math.cos(-Math.PI / 2 - 0.95) * 175, cy + Math.sin(-Math.PI / 2 - 0.95) * 175);
+  ctx.strokeStyle = gold;
+  ctx.lineWidth = 10;
+  ctx.stroke();
+
+  // Centro
+  ctx.beginPath();
+  ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+  ctx.fillStyle = white;
+  ctx.fill();
+
+  ctx.restore();
+
+  // Cabeçalho
+  ctx.textAlign = "center";
+
+  ctx.fillStyle = "rgba(255,255,255,0.72)";
+  ctx.font = "700 60px Arial";
+  ctx.fillText("INSTITUTO IMPULSO COACHING DE LIDERANÇA", W / 2, H * 0.12);
+
+  ctx.fillStyle = white;
+  ctx.font = "900 132px Arial";
+  ctx.fillText("GESTÃO NO TEMPO", W / 2, H * 0.24);
+
+  ctx.fillStyle = cyan;
+  ctx.font = "700 58px Arial";
+  ctx.fillText("Relatório Executivo Personalizado", W / 2, H * 0.285);
+
+  // Bloco do nome do cliente
+  const nameBoxW = W * 0.68;
+  const nameBoxX = (W - nameBoxW) / 2;
+  const nameBoxY = H * 0.57;
+  const nameBoxH = 250;
+
+  const boxGrad = ctx.createLinearGradient(nameBoxX, nameBoxY, nameBoxX + nameBoxW, nameBoxY + nameBoxH);
+  boxGrad.addColorStop(0, "rgba(255,255,255,0.16)");
+  boxGrad.addColorStop(1, "rgba(56,189,248,0.10)");
+  ctx.fillStyle = boxGrad;
+  roundedRect(ctx, nameBoxX, nameBoxY, nameBoxW, nameBoxH, 40);
+  ctx.fill();
+
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = "rgba(255,255,255,0.28)";
+  ctx.stroke();
+
+  ctx.fillStyle = "rgba(255,255,255,0.82)";
+  ctx.font = "700 54px Arial";
+  ctx.fillText("CLIENTE", W / 2, nameBoxY + 78);
+
+  ctx.fillStyle = white;
+  ctx.font = "900 104px Arial";
+  wrapCenteredText(ctx, nomeCliente || "NOME DO CLIENTE", W / 2, nameBoxY + 168, nameBoxW - 90, 112);
+
+  // Selo de resultado
+  const sealX = W / 2;
+  const sealY = H * 0.83;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(sealX, sealY, 120, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(245,197,66,0.14)";
+  ctx.fill();
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = "rgba(245,197,66,0.8)";
+  ctx.stroke();
+
+  ctx.fillStyle = gold;
+  ctx.font = "900 46px Arial";
+  ctx.fillText("ANÁLISE", sealX, sealY - 8);
+  ctx.fillStyle = white;
+  ctx.font = "700 30px Arial";
+  ctx.fillText("DE DESEMPENHO", sealX, sealY + 34);
+  ctx.restore();
+
+  // Rodapé
+  ctx.fillStyle = "rgba(255,255,255,0.72)";
+  ctx.font = "600 36px Arial";
+  ctx.fillText("Impulso Coaching", W / 2, H * 0.93);
+
+  ctx.fillStyle = "rgba(255,255,255,0.55)";
+  ctx.font = "500 28px Arial";
+  ctx.fillText("Gestão no Tempo • Clareza • Foco • Alta Performance", W / 2, H * 0.965);
+
+  return canvas.toDataURL("image/png");
+
+  function roundedRect(ctx, x, y, w, h, r) {
+    const radius = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + w, y, x + w, y + h, radius);
+    ctx.arcTo(x + w, y + h, x, y + h, radius);
+    ctx.arcTo(x, y + h, x, y, radius);
+    ctx.arcTo(x, y, x + w, y, radius);
+    ctx.closePath();
+  }
+
+  function wrapCenteredText(ctx, text, centerX, startY, maxWidth, lineHeight) {
+    const words = String(text).split(" ");
+    let lines = [];
+    let line = "";
+
+    ctx.font = "900 104px Arial";
+    for (let i = 0; i < words.length; i++) {
+      const testLine = line ? line + " " + words[i] : words[i];
+      if (ctx.measureText(testLine).width > maxWidth && line) {
+        lines.push(line);
+        line = words[i];
+      } else {
+        line = testLine;
+      }
+    }
+    if (line) lines.push(line);
+
+    const totalH = (lines.length - 1) * lineHeight;
+    let y = startY - totalH / 2;
+
+    lines.forEach((ln) => {
+      ctx.fillText(ln, centerX, y);
+      y += lineHeight;
+    });
+  }
+}
