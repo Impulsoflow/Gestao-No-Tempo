@@ -836,9 +836,9 @@
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(255, 255, 255);
-    doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 20, { align: 'right' });
+    doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 30, { align: 'right' });
     
-    y = 48;
+    y = 60;
     function addSectionTitle(text) {
       newPageIfNeeded(18);
       y += 4;
