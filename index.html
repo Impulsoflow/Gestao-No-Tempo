@@ -798,7 +798,7 @@
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
     const pageW = 210, pageH = 297, margin = 14;
-    const contentW = pageW - margin * 1,8;
+    const contentW = pageW - margin * 1;
     let y = margin;
     
     const { prettyData, totals, percentages, energyLeak, triadChartImg, idealChartImg } = data;
