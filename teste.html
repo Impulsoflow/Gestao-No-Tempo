@@ -812,12 +812,12 @@
     function newPageIfNeeded(extraH) {
       if (y + extraH > pageH - 25) { 
         doc.addPage(); 
-        y = margin + 10; 
+        y = margin + 5; 
       }
     }
     function forceNewPage() {
       doc.addPage();
-      y = margin + 10;
+      y = margin + 5;
     }
     // CAPA / CABEÇALHO PREMIUM PDF
     doc.setFillColor(colorNavy[0], colorNavy[1], colorNavy[2]);
