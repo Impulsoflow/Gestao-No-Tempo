@@ -10,7 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+  rel="stylesheet">
   <style>
     :root{
       --bg1:#0b4aa2;
@@ -41,25 +42,30 @@
       line-height:1.6;
       padding:18px;
     }
+    /* ========================================================
+       REGRAS DE TIPOGRAFIA PREMIUM SOLICITADAS
+       ======================================================== */
+    /* Garante que TODO texto em negrito use a fonte Arial */
     .brand, .tagline, .form-group label, .error, .counter, .progress-meta,
     .opt[aria-checked="true"], .btn, .result-hero h2, .result-box h3,
     .progress-label, .totals, #energyLeak, .profile .name, .profile .subtitle, .footer,
     b, strong, th {
       font-family: Arial, Helvetica, sans-serif !important;
     }
+    /* Design Elegante do Cabeçalho */
     .header {
       text-align: center;
       padding: 10px 0 20px;
       margin-bottom: 14px;
-      border-bottom: 1px solid rgba(11,99,206,.08);
+      border-bottom: 1px solid rgba(11,99,206,.08); /* Linha sutil para dar acabamento */
     }
     .main-title {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
-      font-weight: normal;
-      color: #64748b;
-      letter-spacing: 0.12em;
+      font-weight: normal; /* Sem negrito, letras finas */
+      color: #64748b; /* Tom diferenciado: Cinza ardósia elegante */
+      letter-spacing: 0.12em; /* Espaçamento premium */
       text-transform: uppercase;
       line-height: 1.2;
     }
@@ -75,8 +81,8 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 34px;
       line-height: 1.15;
-      color: #063b7a;
-      font-weight: normal;
+      color: #063b7a; /* Azul principal */
+      font-weight: normal; /* Sem negrito, letras finas */
       letter-spacing: -0.01em;
     }
     .header-desc {
@@ -86,6 +92,7 @@
       font-size: 14px;
       font-weight: normal;
     }
+    /* ======================================================== */
     .container{
       max-width:980px;
       margin:0 auto;
@@ -104,6 +111,7 @@
       background:linear-gradient(90deg, var(--accent), var(--primary));
     }
     .wrap{ padding:26px; }
+    
     .card{
       background:var(--card);
       border:1px solid rgba(207,230,255,.95);
@@ -127,6 +135,8 @@
       text-align: justify;
     }
     .instructions p:last-child{ margin-bottom:0; }
+    
+    /* === GRID PARA OS DADOS DO PARTICIPANTE === */
     .grid-form {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -141,6 +151,7 @@
     @media (max-width: 650px) {
       .grid-form { grid-template-columns: 1fr; }
     }
+    
     .form-group label{
       display:block;
       font-weight:800;
@@ -450,6 +461,8 @@
 <body>
   <div class="container">
     <div class="wrap">
+      
+      <!-- CABEÇALHO ELEGANTE/PREMIUM -->
       <div class="header">
         <p class="main-title">Instituto Impulso Coaching de Liderança</p>
         <p class="tagline">A mudança pode acontecer em um instante</p>
@@ -457,13 +470,15 @@
         <p class="header-desc">Descubra como você investe sua energia vital e assuma o controle de suas tarefas.</p>
       </div>
 
+      <!-- STEP: INTRO -->
       <section id="step-intro" class="step active">
         <div class="instructions">
           <p>O método de mapeamento utilizado nesta pesquisa é a Tríade do Tempo, criado por Christian Barbosa, autor do best-seller "A Tríade do Tempo". É um modelo prático de medir a produtividade inspirado em metodologias globais de gestão no tempo. Ela mapeia com precisão cirúrgica onde sua energia e foco estão sendo investidos diariamente.</p>
           <p>Organizações e executivos que adotam esta metodologia, relatam ganhos expressivos de performance, com aumento de produtividade chegando a 50%. Agora, você iniciará o mesmo processo que líderes de alta performance utilizam para transformar agenda em resultado de alto impacto.</p>
           <p style="margin-top: 10px; color: #0b63ce;"><strong style="font-family: Arial, sans-serif;">Instruções:</strong> Selecione a opção que reflete fielmente sua realidade atual: 1 (Nunca) à 5 (Sempre). Seja honesto para identificar a sua realidade atual. Não responda como gostaria de ser, mas como você realmente é hoje.</p>
         </div>
-
+        
+        <!-- DADOS DO PARTICIPANTE -->
         <div class="card" style="width: 100%; max-width: 720px; margin: 0 auto; padding: 32px 24px;">
           <div class="grid-form">
             <div class="form-group">
@@ -471,21 +486,25 @@
               <input type="text" id="name" name="name" autocomplete="name" placeholder="Ex: João Silva" />
               <p id="name-error" class="error">Por favor, preencha o nome.</p>
             </div>
+            
             <div class="form-group">
               <label for="whatsapp">WhatsApp *</label>
               <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 90000-0000" maxlength="15" />
               <p id="whatsapp-error" class="error">Por favor, preencha um WhatsApp válido.</p>
             </div>
+            
             <div class="form-group">
               <label for="email">E-mail Corporativo/Pessoal *</label>
               <input type="email" id="email" name="email" autocomplete="email" placeholder="email@exemplo.com" />
               <p id="email-error" class="error">Por favor, preencha um e-mail válido.</p>
             </div>
+            
             <div class="form-group">
               <label for="profession">Cargo / Profissão *</label>
               <input type="text" id="profession" name="profession" autocomplete="organization-title" placeholder="Ex: Diretor, Gerente" />
               <p id="profession-error" class="error">Por favor, preencha a profissão.</p>
             </div>
+            
             <div class="form-group">
               <label for="age">Idade *</label>
               <input type="text" id="age" name="age" maxlength="2" inputmode="numeric" placeholder="Ex: 35" />
@@ -505,12 +524,14 @@
               <p id="escolaridade-error" class="error">Por favor, selecione a escolaridade.</p>
             </div>
           </div>
+          
           <div class="nav" style="justify-content:center; margin-top:32px;">
             <button id="btn-start" class="btn btn-primary" type="button" style="width: 100%; max-width: 320px; justify-content: center; padding: 14px; font-size: 16px;">Iniciar Avaliação</button>
           </div>
         </div>
       </section>
 
+      <!-- STEP: QUIZ -->
       <section id="step-quiz" class="step">
         <div class="topbar">
           <div class="counter">Pergunta <span id="q-current">1</span> de 18</div>
@@ -529,6 +550,7 @@
         </div>
       </section>
 
+      <!-- STEP: RESULTS -->
       <section id="step-results" class="step">
         <div class="result-hero">
           <h2 id="result-title">Sua Gestão no Tempo</h2>
@@ -604,11 +626,13 @@
       </section>
     </div>
   </div>
-
   <script>
   if (!window.jspdf) { alert("Erro de Biblioteca. Recarregue a página."); }
   if (!window.Chart) { alert("Erro de Biblioteca de Gráfico. Recarregue a página."); }
 
+  // 
+  // ⚙️ CONFIGURAÇÃO DO GOOGLE APPS SCRIPT
+  // 
   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzQMG4dNq2SkOOeWUWei9m7RoA_Fl9dteIKkK_MQScujsNTuORU1XyWElL-2Kovb-NO/exec";    
   const API_KEY = "2026Impulso$";
 
@@ -617,6 +641,7 @@
   let emailSendAttempts = 0;
   const MAX_EMAIL_ATTEMPTS = 3;
 
+  // Função para padronizar textos em Title Case (Primeiras Letras Maiúsculas)
   function toTitleCase(str) {
     if (!str) return "";
     return str.toLowerCase().split(' ').map(function(word) {
@@ -629,40 +654,53 @@
     }).join(' ');
   }
 
+  //
+  // 🎨 NOVO GERADOR DE GRÁFICO IDÊNTICO AO RESULTADO (FLAT PIE CHART)
+  //
   function createFlatPieBase64(pCir, pImp, pUrg) {
     const canvas = document.createElement("canvas");
     canvas.width = 800; canvas.height = 800;
     const ctx = canvas.getContext("2d");
     const cx = 400, cy = 400, r = 360;
+    
     const data = [
       { val: pCir, color: "#FFD700", textColor: "#000000" }, 
       { val: pImp, color: "#0b63ce", textColor: "#FFFFFF" }, 
       { val: pUrg, color: "#dc2626", textColor: "#FFFFFF" }  
     ];
+    
     let startAngle = -Math.PI / 2;
+    
     data.forEach(d => {
       if(d.val <= 0) return;
       const sliceAngle = (d.val / 100) * 2 * Math.PI;
       const endAngle = startAngle + sliceAngle;
+      
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.arc(cx, cy, r, startAngle, endAngle);
       ctx.closePath();
       ctx.fillStyle = d.color;
       ctx.fill();
+      
       ctx.lineWidth = 14; 
       ctx.strokeStyle = "#ffffff";
       ctx.stroke();
+      
       const midAngle = startAngle + sliceAngle / 2;
       const textX = cx + Math.cos(midAngle) * (r * 0.60);
       const textY = cy + Math.sin(midAngle) * (r * 0.60);
+      
       ctx.fillStyle = d.textColor;
+      // Uso forçado de Arial para garantir consistência visual no Canvas
       ctx.font = "bold 46px Arial, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(`${d.val}%`, textX, textY);
+      
       startAngle += sliceAngle;
     });
+    
     return canvas.toDataURL("image/png");
   }
 
@@ -700,7 +738,7 @@
         nome: "Super Poderoso Thor", 
         subtitle: "Importante: Dominante | O perfil da Alta Performance Excepcional",
         desc: "Sinônimo de preparo, planejamento estratégico e alto valor agregado.",
-        texto: "Representa o mais alto nível de gestão do tempo. Essa maestria é resultado de hábitos deliberados e visão cristalina de futuro. Você não apenas resolve problemas, você os antecipa e neutraliza na raiz. Domina a complexa arte de dizer 'não' ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta.\n\nA circunstância em sua rotina existe apenas como um descanso intencional, servindo para alimentar seu estado de Flow e traduzindo-se em excelência, foco e equilíbrio vital.\n\nPróximo Passo Estratégico: Manter a blindagem contra as interrupções externas e focar em delegação avançada." 
+        texto: "Thor representa o mais alto nível de maestria na gestão do tempo. Ele não apenas organiza a agenda — ele desenha a própria rotina com intenção, clareza e precisão. Cada decisão reflete prioridade real, cada bloco de tempo tem um propósito definido e cada energia investida é direcionada para o que gera impacto de verdade. Esse perfil é raro porque combina execução consistente com visão de longo prazo, transformando disciplina em vantagem competitiva.\n\nO que torna Thor excepcional não é fazer tudo, mas fazer o que importa com excelência. Seus hábitos não surgem por acaso: são construídos deliberadamente, repetidos com constância e refinados ao longo do tempo. Há aqui uma compreensão madura de que performance sustentável não nasce de esforço caótico, mas de sistemas conscientes, escolhas bem calibradas e uma relação inteligente com o tempo. Mais do que talento, Thor encarna a diferença entre potencial e consistência.\n\nTalento pode abrir portas; disciplina bem arquitetada sustenta resultados e amplia capacidade ao longo dos anos. Sua visão de futuro funciona como bússola: orienta prioridades, elimina distrações e protege o foco do que é urgente, porém secundário. Esse perfil é forjado dia após dia, por meio de escolhas intencionais que acumulam força, elevam maturidade e constroem uma trajetória de alta performance real.\n\nAntecipação Estratégica: Ele não apenas resolve problemas — antecipa e neutraliza na raiz, antes que se tornem urgências. Opera de forma cirúrgica no que é verdadeiramente importante.\n\nArte do Não: Domina a complexa arte de dizer não ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta e sem culpa.\n\nEstado de Flow: O circunstâncial em sua rotina existe apenas como descanso intencional, servindo para alimentar o estado de Flow e gerar excelência sustentável.\n\nEquilíbrio Vital:Traduz sua maestria em foco, equilíbrio e resultados consistentes — sem sacrificar saúde, relacionamentos ou qualidade de vida no processo.\n\nPasso Estratégico de melhoria: Manter a blindagem contra interrupções externas e focar em delegação avançada. O crescimento de Thor não está em fazer mais — está em multiplicar sua capacidade por meio das pessoas ao seu redor, elevando o nível de toda a equipe."    
       };
     }
     else if (b >= 55 && a >= 30 && c <= 20) {
@@ -708,7 +746,7 @@
         nome: "Homem de Ferro", 
         subtitle: "Importante: Predominante | Inteligência focada em resultados",
         desc: "Perfil executivo de alto desempenho, ancorado em planejamento e estratégia pura.",
-        texto: "Vive prioritariamente na esfera do Importante. Você compreendeu que trabalhar de forma inteligente é superior a apenas trabalhar duro. Antecipa problemas de forma cirúrgica antes que se tornem urgências, mantendo inteligência emocional e calma sob pressão. Este padrão gera resultados impressionantes e um senso claro de propósito e pertencimento.\n\nPonto de Atenção Crítico: O seu principal risco é a infiltração gradual da esfera circunstancial. O excesso de lazer desestruturado ou redes sociais pode erodir seu foco estratégico lentamente, sem que você perceba."
+        texto: "Vive prioritariamente na esfera do Importante. Você compreendeu que trabalhar de forma inteligente é superior a apenas trabalhar duro. Antecipa problemas de forma cirúrgica antes que se tornem urgências, mantendo inteligência emocional e calma sob pressão. Este padrão gera resultados impressionantes e um senso claro de propósito e pertencimento.\n\nPonto de Atenção Crítico: O seu principal risco é a infiltração gradual da esfera circunstancial. O excesso de lazer desestruturado ou redes sociais pode erodir seu foco estratégico lentamente, sem que você perceba." 
       };
     }
     else if (c >= 25 && c <= 45 && a >= 25 && a <= 45 && b <= 40) {
@@ -735,12 +773,13 @@
         texto: "O profissional que aparenta estar sempre superocupado, vivendo do pico de adrenalina das crises e apagando incêndios na última hora. Frequentemente recebe elogios por 'salvar o dia', o que é uma armadilha, pois reforça neurobiologicamente esse ciclo exaustivo. Com a agenda dominada por reações externas, a capacidade de pensar de forma estratégica, inovar ou entrar em Flow despenca.\n\nRiscos e Consequências Críticas:\n• Risco iminente de Síndrome de Burnout e exaustão crônica sistêmica.\n• Sensação persistente de insegurança ('o que vai explodir hoje?').\n• Queda severa na qualidade das entregas, compensada por esforço heroico e insustentável."
       };
     }
+    // AQUI ESTÁ A ALTERAÇÃO SOLICITADA
     else if(b >= a && b >= c) {
       prof = { 
         nome: "Super Poderoso Thor", 
         subtitle: "Importante: Dominante | O perfil da Alta Performance Excepcional",
         desc: "Sinônimo de preparo, planejamento estratégico e alto valor agregado.",
-        texto: "Representa o mais alto nível de gestão do tempo. Essa maestria é resultado de hábitos deliberados e visão cristalina de futuro. Você não apenas resolve problemas, você os antecipa e neutraliza na raiz. Domina a complexa arte de dizer 'não' ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta.\n\nA circunstância em sua rotina existe apenas como um descanso intencional, servindo para alimentar seu estado de Flow e traduzindo-se em excelência, foco e equilíbrio vital.\n\nPróximo Passo Estratégico: Manter a blindagem contra as interrupções externas e focar em delegação avançada." 
+        texto: "Thor representa o mais alto nível de maestria na gestão do tempo. Ele não apenas organiza a agenda — ele desenha a própria rotina com intenção, clareza e precisão. Cada decisão reflete prioridade real, cada bloco de tempo tem um propósito definido e cada energia investida é direcionada para o que gera impacto de verdade. Esse perfil é raro porque combina execução consistente com visão de longo prazo, transformando disciplina em vantagem competitiva.\n\nO que torna Thor excepcional não é fazer tudo, mas fazer o que importa com excelência. Seus hábitos não surgem por acaso: são construídos deliberadamente, repetidos com constância e refinados ao longo do tempo. Há aqui uma compreensão madura de que performance sustentável não nasce de esforço caótico, mas de sistemas conscientes, escolhas bem calibradas e uma relação inteligente com o tempo. Mais do que talento, Thor encarna a diferença entre potencial e consistência.\n\nTalento pode abrir portas; disciplina bem arquitetada sustenta resultados e amplia capacidade ao longo dos anos. Sua visão de futuro funciona como bússola: orienta prioridades, elimina distrações e protege o foco do que é urgente, porém secundário. Esse perfil é forjado dia após dia, por meio de escolhas intencionais que acumulam força, elevam maturidade e constroem uma trajetória de alta performance real.\n\nAntecipação Estratégica: Ele não apenas resolve problemas — antecipa e neutraliza na raiz, antes que se tornem urgências. Opera de forma cirúrgica no que é verdadeiramente importante.\n\nArte do Não: Domina a complexa arte de dizer não ao urgente e ao trivial, blindando seu tempo estratégico de forma absoluta e sem culpa.\n\nEstado de Flow: O circunstâncial em sua rotina existe apenas como descanso intencional, servindo para alimentar o estado de Flow e gerar excelência sustentável.\n\nEquilíbrio Vital:Traduz sua maestria em foco, equilíbrio e resultados consistentes — sem sacrificar saúde, relacionamentos ou qualidade de vida no processo.\n\nPasso Estratégico de melhoria: Manter a blindagem contra interrupções externas e focar em delegação avançada. O crescimento de Thor não está em fazer mais — está em multiplicar sua capacidade por meio das pessoas ao seu redor, elevando o nível de toda a equipe." 
       };
     }
     else if(c >= a && c >= b) {
@@ -749,6 +788,7 @@
     else {
       prof = { nome: "Predominância em Circunstância (A)", subtitle: "Desvio de Foco Estratégico", desc: "Atenção sequestrada por trivialidades.", texto: "O volume de atividades sem valor agregado está alto. O risco de perda de performance e estagnação de carreira é um fator de atenção urgente." };
     }
+    
     if (prof.nome.includes("Super Homem")) prof.chartBase64 = createFlatPieBase64(25, 10, 65);
     else if (prof.nome.includes("Homer")) prof.chartBase64 = createFlatPieBase64(75, 10, 15);
     else if (prof.nome.includes("Equilibrista")) prof.chartBase64 = createFlatPieBase64(45, 10, 45);
@@ -758,68 +798,227 @@
     return prof;
   }
 
+  // 
+  // 📄 GERAÇÃO DO PDF EXECUTIVO (PREMIUM) - VERSÃO REFINADA COM CAPA E LAYOUT PROFISSIONAL
+  // 
   async function generatePdfDocAndFileName() {
     const data = window._triadeData;
     if (!data) throw new Error("Sem dados para gerar PDF.");
     if (!window.jspdf) throw new Error("jsPDF não está disponível.");
+    
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
     const pageW = 210, pageH = 297, margin = 16;
     const contentW = pageW - margin * 2;
     let y = margin;
+    
     const { prettyData, totals, percentages, energyLeak, triadChartImg, idealChartImg } = data;
     const formattedName = toTitleCase(sanitizeInput(prettyData.nome));
     const formattedProf = toTitleCase(sanitizeInput(prettyData.profissao));
-    const colorNavy = [11, 42, 82];
-    const colorBlue = [11, 99, 206];
-    const colorText = [51, 51, 51];
-    const colorMuted = [100, 116, 139];
-    const colorBg = [244, 249, 255];
+    const prof = triadPickProfile(percentages.A, percentages.B, percentages.C);
+    const profileColor = getProfileColor(prof.nome); // Cor predominante do perfil para cabeçalho
+    const colorNavy = [11, 42, 82];      
+    const colorBlue = [11, 99, 206];     
+    const colorText = [51, 51, 51];      
+    const colorMuted = [100, 116, 139];  
+    const colorBg = [244, 249, 255];     
+
+    // Função para obter cor predominante do perfil (para cabeçalho)
+    function getProfileColor(profileName) {
+      if (profileName.includes("Thor") || profileName.includes("Homem de Ferro")) return [11, 99, 206]; // Azul para Importância
+      if (profileName.includes("Homer")) return [255, 193, 7]; // Amarelo para Circunstância
+      if (profileName.includes("Super Homem")) return [220, 38, 38]; // Vermelho para Urgência
+      if (profileName.includes("Equilibrista")) return [59, 130, 246]; // Azul equilibrado
+      return [11, 99, 206]; // Default azul
+    }
 
     function newPageIfNeeded(extraH) {
-      if (y + extraH > pageH - 25) {
-        doc.addPage();
-        y = margin + 10;
+      if (y + extraH > pageH - 25) { 
+        doc.addPage(); 
+        y = margin + 10; 
+        drawProfessionalHeader(profileColor, prof.nome, formattedName); // Cabeçalho com cor do perfil
       }
     }
     function forceNewPage() {
       doc.addPage();
       y = margin + 10;
-    }
-    const coverData = window._coverData || null;
-    if (coverData) {
-      doc.addImage(coverData, "PNG", 0, 0, pageW, pageH);
-      doc.addPage();
+      drawProfessionalHeader(profileColor, prof.nome, formattedName);
     }
 
-    doc.setFillColor(colorNavy[0], colorNavy[1], colorNavy[2]);
-    doc.rect(0, 0, pageW, 35, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(22);
-    doc.text("Instituto Impulso Coaching de Liderança", margin, 16);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(12);
-    doc.setTextColor(220, 235, 255);
-    doc.text(`Relatório da Gestão no Tempo de ${formattedName}`, margin, 25);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
-    doc.setTextColor(255, 255, 255);
-    doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 25, { align: 'right' });
+    // CAPA PROFISSIONAL - Página inicial com desenho simbólico (relógio/fluxo de tempo), nome do candidato, instituto e coach
+    // Desenho simbólico: Relógio estilizado representando gestão do tempo
+    const coverBase64 = buildProfessionalCover(formattedName);
+    doc.addImage(coverBase64, "PNG", 0, 0, pageW, pageH);
+    doc.addPage();
 
-    y = 50;
+    function buildProfessionalCover(candidateName) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 2480; canvas.height = 3508; // Alta resolução para A4
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width, H = canvas.height;
+      const navy = "#0a2540"; // Azul navy profissional
+      const blue = "#1e40af"; // Azul corporativo
+      const accent = "#3b82f6"; // Azul claro
+      const white = "#ffffff";
+      const gold = "#fbbf24"; // Dourado para destaque
+
+      // Fundo gradiente profissional
+      const gradient = ctx.createLinearGradient(0, 0, 0, H);
+      gradient.addColorStop(0, navy);
+      gradient.addColorStop(0.6, "#1e3a8a");
+      gradient.addColorStop(1, "#1e40af");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, W, H);
+
+      // Desenho simbólico: Relógio estilizado representando gestão do tempo (círculo com setas de fluxo)
+      drawSymbolicClock(ctx, W / 2, H * 0.4, 400); // Relógio central
+
+      // Faixa superior corporativa
+      ctx.fillStyle = navy;
+      ctx.fillRect(0, 0, W, 80);
+      ctx.fillStyle = white;
+      ctx.font = "bold 120px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("INSTITUTO IMPULSO", W / 2, 60);
+      ctx.font = "bold 80px Arial";
+      ctx.fillText("COACHING DE LIDERANÇA", W / 2, 140);
+
+      // Título principal
+      ctx.fillStyle = white;
+      ctx.font = "bold 140px Arial";
+      ctx.fillText("Mapeamento", W / 2, H * 0.55);
+      ctx.fillText("da Gestão", W / 2, H * 0.62);
+      ctx.fillText("no Tempo", W / 2, H * 0.69);
+
+      // Nome do candidato em destaque
+      ctx.fillStyle = gold;
+      ctx.font = "bold 90px Arial";
+      ctx.fillText("Relatório Personalizado", W / 2, H * 0.75);
+      ctx.fillStyle = white;
+      ctx.font = "bold 110px Arial";
+      wrapText(ctx, candidateName.toUpperCase(), W / 2, H * 0.82, W * 0.8, 100);
+
+      // Rodapé com coach e data
+      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      ctx.font = "bold 50px Arial";
+      ctx.fillText("Master Coach Rogério Braga", W / 2, H * 0.92);
+      ctx.font = "italic 40px Arial";
+      ctx.fillText(`Data: ${new Date().toLocaleDateString('pt-BR')}`, W / 2, H * 0.97);
+
+      return canvas.toDataURL("image/png");
+    }
+
+    function drawSymbolicClock(ctx, cx, cy, r) {
+      // Círculo principal (relógio)
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgba(255,255,255,0.1)";
+      ctx.fill();
+      ctx.strokeStyle = white;
+      ctx.lineWidth = 8;
+      ctx.stroke();
+
+      // Setas de fluxo (representando gestão do tempo)
+      const arrowLength = r * 0.6;
+      const angles = [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2]; // 12h, 3h, 6h, 9h
+      angles.forEach(angle => {
+        const endX = cx + Math.cos(angle) * arrowLength;
+        const endY = cy + Math.sin(angle) * arrowLength;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 6;
+        ctx.stroke();
+
+        // Ponta da seta
+        const tipLength = 20;
+        const tipAngle = Math.PI / 6;
+        const tipX1 = endX + Math.cos(angle + tipAngle) * tipLength;
+        const tipY1 = endY + Math.sin(angle + tipAngle) * tipLength;
+        const tipX2 = endX + Math.cos(angle - tipAngle) * tipLength;
+        const tipY2 = endY + Math.sin(angle - tipAngle) * tipLength;
+        ctx.beginPath();
+        ctx.moveTo(endX, endY);
+        ctx.lineTo(tipX1, tipY1);
+        ctx.moveTo(endX, endY);
+        ctx.lineTo(tipX2, tipY2);
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+      });
+
+      // Centro do relógio
+      ctx.beginPath();
+      ctx.arc(cx, cy, 15, 0, 2 * Math.PI);
+      ctx.fillStyle = gold;
+      ctx.fill();
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let lines = [];
+      ctx.font = "bold 110px Arial";
+      for (let n = 0; n < words.length; n++) {
+        let testLine = line + words[n] + ' ';
+        let metrics = ctx.measureText(testLine);
+        let testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+          lines.push(line);
+          line = words[n] + ' ';
+        } else {
+          line = testLine;
+        }
+      }
+      lines.push(line);
+      lines.forEach((l, i) => ctx.fillText(l, x, y + (lineHeight * i)));
+    }
+
+    // Cabeçalho profissional com cor do perfil e dados iniciais
+    function drawProfessionalHeader(profileColor, profileName, candidateName) {
+      // Faixa superior com cor predominante do perfil
+      doc.setFillColor(profileColor[0], profileColor[1], profileColor[2]);
+      doc.rect(0, 0, pageW, 12, 'F');
+      
+      // Linha sutil abaixo da faixa
+      doc.setDrawColor(255, 255, 255);
+      doc.setLineWidth(1);
+      doc.line(0, 12, pageW, 12);
+
+      // Título do instituto
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("Instituto Impulso Coaching de Liderança", margin, 8);
+
+      // Dados do perfil e candidato no cabeçalho
+      doc.setFontSize(8);
+      doc.text(`Perfil: ${profileName.substring(0, 20)}... | Candidato: ${candidateName.substring(0, 25)}...`, pageW - margin, 8, { align: 'right' });
+
+      // Data discreta
+      doc.setTextColor(220, 235, 255);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(7);
+      doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 10, { align: 'right' });
+    }
+
+    // Aplicar cabeçalho na primeira página principal
+    drawProfessionalHeader(profileColor, prof.nome, formattedName);
 
     function addSectionTitle(text) {
       newPageIfNeeded(18);
       y += 4;
-      doc.setFillColor(colorBg[0], colorBg[1], colorBg[2]);
+      doc.setFillColor(248, 250, 252); // Fundo claro para seção
       doc.rect(margin, y - 5, contentW, 8, 'F');
-      doc.setDrawColor(colorBlue[0], colorBlue[1], colorBlue[2]);
-      doc.setLineWidth(1.2);
+      
+      doc.setDrawColor(profileColor[0], profileColor[1], profileColor[2]); // Cor do perfil na linha esquerda
+      doc.setLineWidth(2);
       doc.line(margin, y - 5, margin, y + 3);
-      doc.setFont("helvetica", "bold");
+      
+      doc.setFont("helvetica", "bold"); 
       doc.setFontSize(14);
-      doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
+      doc.setTextColor(11, 42, 82); // Navy para título
       doc.text(text.toUpperCase(), margin + 4, y + 1);
       y += 10;
     }
@@ -828,17 +1027,19 @@
       newPageIfNeeded(6);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(9);
-      doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
+      doc.setTextColor(100, 116, 139);
       doc.text(label1 + ":", margin, y);
+      
       doc.setFont("helvetica", "normal");
-      doc.setTextColor(colorText[0], colorText[1], colorText[2]);
+      doc.setTextColor(51, 51, 51);
       doc.text(String(val1), margin + 25, y);
+      
       if(label2) {
         doc.setFont("helvetica", "bold");
-        doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
+        doc.setTextColor(100, 116, 139);
         doc.text(label2 + ":", margin + 90, y);
         doc.setFont("helvetica", "normal");
-        doc.setTextColor(colorText[0], colorText[1], colorText[2]);
+        doc.setTextColor(51, 51, 51);
         doc.text(String(val2), margin + 115, y);
       }
       y += 6;
@@ -847,90 +1048,106 @@
     function addParagraph(text, fontSize = 9.5, lineH = 5) {
       doc.setFont("helvetica", "normal");
       doc.setFontSize(fontSize);
-      doc.setTextColor(colorText[0], colorText[1], colorText[2]);
+      doc.setTextColor(51, 51, 51);
       const lines = doc.splitTextToSize(String(text), contentW);
       lines.forEach(ln => {
         newPageIfNeeded(lineH);
         doc.text(ln, margin, y);
         y += lineH;
       });
-      y += 2;
+      y += 2; // Espaço extra para respiro profissional
     }
 
     addSectionTitle("1. Participante");
     addDataRow("Nome", formattedName, "Idade", sanitizeInput(prettyData.idade) + " anos");
     addDataRow("Cargo", formattedProf, "Formação", sanitizeInput(prettyData.escolaridade));
     addDataRow("E-mail", sanitizeInput(prettyData.email).toLowerCase(), "WhatsApp", sanitizeInput(prettyData.whatsapp));
+    
+    y += 8; // Mais espaço para distribuição profissional
 
-    y += 4;
     addSectionTitle("2. Resultado da Gestão no Tempo");
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.setTextColor(colorText[0], colorText[1], colorText[2]);
+    doc.setTextColor(51, 51, 51);
     doc.text("Distribuição do Tempo:", margin, y);
     y += 6;
     addDataRow("Importância", `${Number(percentages.B).toFixed(1)}%`, "Urgência", `${Number(percentages.C).toFixed(1)}%`);
-    addDataRow("Circunstância", `${Number(percentages.A).toFixed(1)}%`, "Total de Pontos", totals.General);
-
-    y += 4;
-    doc.setFillColor(254, 242, 242);
-    doc.setDrawColor(252, 165, 165);
+    addDataRow("Circunstância",  `${Number(percentages.A).toFixed(1)}%`, "Total de Pontos", totals.General);
+    
+    y += 8; // Espaço para destaque
+    
+    doc.setFillColor(254, 242, 242); 
+    doc.setDrawColor(252, 165, 165); 
     doc.setLineWidth(0.5);
     doc.roundedRect(margin, y, contentW, 10, 2, 2, "FD");
+    
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
-    doc.setTextColor(185, 28, 28);
+    doc.setFontSize(15);
+    doc.setTextColor(185, 28, 28); 
     doc.text(`ALERTA: Índice de Vazamento de Energia vital: ${energyLeak}`, margin + 5, y + 6.5);
     y += 16;
 
-    const prof = triadPickProfile(Number(percentages.A), Number(percentages.B), Number(percentages.C));
     addSectionTitle("3. Diagnóstico de Comparação do Perfil");
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
-    doc.setTextColor(colorBlue[0], colorBlue[1], colorBlue[2]);
+    doc.setTextColor(profileColor[0], profileColor[1], profileColor[2]); // Cor do perfil
     doc.text(`Perfil Encontrado: ${prof.nome}`, margin, y);
     y += 6;
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
+    doc.setTextColor(11, 42, 82);
     doc.text(prof.subtitle, margin, y);
     y += 6;
+    
     addParagraph(prof.desc, 10, 5);
     y += 2;
     addParagraph(prof.texto, 9.5, 5);
 
     forceNewPage();
     addSectionTitle("4. Análise Gráfica Comparativa");
+    
     const boxSize = 80;
     const gap = 10;
     const totalW = (boxSize * 2) + gap;
     const startX = margin + (contentW - totalW) / 2;
-    let boxY = y + 5;
-
+    let boxY = y + 5; 
+    
     doc.setDrawColor(207, 230, 255);
     doc.setLineWidth(0.5);
     doc.roundedRect(startX, boxY, boxSize, boxSize, 3, 3, "S");
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
-    doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
+    doc.setTextColor(11, 42, 82);
     doc.text("Sua Gestão Atual", startX + (boxSize / 2), boxY - 3, { align: "center" });
-    try { if (triadChartImg) doc.addImage(triadChartImg, "PNG", startX + 2, boxY + 2, boxSize - 4, boxSize - 4); } catch(e) {}
+    
+    try {
+      if (triadChartImg) doc.addImage(triadChartImg, "PNG", startX + 2, boxY + 2, boxSize - 4, boxSize - 4);
+    } catch(e) {}
+    
     doc.roundedRect(startX + boxSize + gap, boxY, boxSize, boxSize, 3, 3, "S");
     doc.text("Gestão Ideal", startX + boxSize + gap + (boxSize / 2), boxY - 3, { align: "center" });
-    try { if (idealChartImg) doc.addImage(idealChartImg, "PNG", startX + boxSize + gap + 2, boxY + 2, boxSize - 4, boxSize - 4); } catch(e) {}
+    
+    try {
+      if (idealChartImg) doc.addImage(idealChartImg, "PNG", startX + boxSize + gap + 2, boxY + 2, boxSize - 4, boxSize - 4);
+    } catch(e) {}
     y = boxY + boxSize + 15;
-
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
-    doc.setTextColor(colorBlue[0], colorBlue[1], colorBlue[2]);
+    doc.setTextColor(11, 99, 206);
     doc.text("O Poder de Organizar Bem o Seu Tempo", margin, y);
     y += 7;
-    const textoComparativo = "Quando você compara como usa seu tempo hoje com o que seria o ideal, você não está apenas olhando para a sua agenda. Na verdade, está enxergando como sua mente funciona e para onde sua energia está indo. Existe um modelo considerado ideal para pessoas que produzem muito bem: 70% do tempo em coisas importantes, 20% em coisas urgentes e 10% em situações circunstanciais (interrupções, distrações e tarefas que aparecem de repente). Esse equilíbrio ajuda o cérebro a funcionar melhor. Quando a maior parte do tempo é dedicada ao que realmente importa, a pessoa entra em um estado de alta produtividade, conhecido como estado de flow — quando o trabalho flui, a mente fica focada e as coisas rendem mais.\nPor outro lado, quando vivemos apagando incêndios (só resolvendo urgências) ou gastando tempo com distrações, o cérebro entra em modo de estresse. Isso aumenta o cortisol, o hormônio do estresse, e nos prende em pequenas recompensas rápidas que tiram o foco do que realmente gera resultados. Ao perceber a diferença entre como você usa seu tempo hoje e como poderia usar, fica mais fácil identificar onde sua energia está sendo desperdiçada.\nQuando você começa, pouco a pouco, a colocar mais tempo nas coisas realmente importantes, vários benefícios aparecem: você melhora seu equilíbrio emocional; passa a enxergar melhor o todo das situações; toma decisões mais claras; reduz o risco de esgotamento e burnout.\nO objetivo dessa análise não é virar um robô perfeito. É simplesmente desenvolver consciência e intenção. Cada pedacinho de tempo que você tira das distrações ou das urgências e coloca em coisas realmente importantes aumenta muito sua capacidade de: liderar pessoas; tomar decisões difíceis; criar soluções novas; construir resultados duradouros na carreira e na vida.";
+    const textoComparativo = "Quando você compara como usa seu tempo hoje com o que seria o ideal, você não está apenas olhando para a sua agenda. Na verdade, está enxergando como sua mente funciona e para onde sua energia está indo. Existe um modelo considerado ideal para pessoas que produzem muito bem: 70% do tempo em coisas importantes, 20% em coisas urgentes e 10% em situações circunstanciais (interrupções, distrações e tarefas que aparecem de repente). Esse equilíbrio ajuda o cérebro a funcionar melhor. Quando a maior parte do tempo é dedicada ao que realmente importa, a pessoa entra em um estado de alta produtividade, conhecido como estado de flow — quando o trabalho flui, a mente fica focada e as coisas rendem mais.\n\nPor outro lado, quando vivemos apagando incêndios (só resolvendo urgências) ou gastando tempo com distrações, o cérebro entra em modo de estresse. Isso aumenta o cortisol, o hormônio do estresse, e nos prende em pequenas recompensas rápidas que tiram o foco do que realmente gera resultados. Ao perceber a diferença entre como você usa seu tempo hoje e como poderia usar, fica mais fácil identificar onde sua energia está sendo desperdiçada.\n\nQuando você começa, pouco a pouco, a colocar mais tempo nas coisas realmente importantes, vários benefícios aparecem: você melhora seu equilíbrio emocional; passa a enxergar melhor o todo das situações; toma decisões mais claras; reduz o risco de esgotamento e burnout.\n\nO objetivo dessa análise não é virar um robô perfeito. É simplesmente desenvolver consciência e intenção. Cada pedacinho de tempo que você tira das distrações ou das urgências e coloca em coisas realmente importantes aumenta muito sua capacidade de: liderar pessoas; tomar decisões difíceis; criar soluções novas; construir resultados duradouros na carreira e na vida.";      
+      
     addParagraph(textoComparativo, 10.5, 6);
 
     forceNewPage();
     addSectionTitle("5. Inteligência do Método - As 3 Esferas");
-
+    
     function addSphereExpl(title, colorRGB, text) {
       doc.setFont("helvetica", "bold");
       doc.setFontSize(14);
@@ -941,93 +1158,120 @@
       addParagraph(text, 9.5, 4.8);
       y += 5; 
     }
-
+    
     addSphereExpl("Esfera Importante (Azul) - Alta Performance e Estado de Flow", [11, 99, 206], "A esfera do Importante reúne as atividades estratégicas que geram resultados consistentes e sustentáveis de curto, médio e longo prazo. É o território dos líderes de sucesso, onde residem os projetos de vida, metas estruturadas, saúde integral e desenvolvimento de relacionamentos. Tarefas bem planejadas nunca se tornam urgentes. Viver nesta esfera é sinônimo de governança, clareza e controle absoluto sobre sua carreira. Quando a maior parte do seu tempo reside aqui, o cérebro opera com frequência no 'Estado de Flow' (fluxo contínuo), maximizando o potencial criativo, o engajamento profundo e a sensação plena de realização e propósito.");
     addSphereExpl("Esfera da Urgência (Vermelha) - O Gerador de Estresse e Burnout", [220, 38, 38], "Atividades com prazo exaurido que exigem reação imediata. Operar constantemente nesta esfera força o organismo a trabalhar sob picos nocivos de estresse (inundando o corpo de cortisol e adrenalina), provocando decisões precipitadas e queda drástica na inteligência emocional. A urgência constante não é sinônimo de importância ou alta produtividade; é, na verdade, um sintoma claro de falhas no planejamento prévio e dificuldade em delegar ou dizer 'não'. O preço pago por líderes que habitam esta esfera de forma crônica é a deterioração da saúde física e mental, beirando a estafa, o esgotamento extremo e a Síndrome de Burnout.");
     addSphereExpl("Esfera Circunstancial (Amarela) - Ladrões de Tempo e Fugas de Dopamina", [212, 160, 23], "Engloba tarefas desnecessárias, distrações e consumo passivo de tempo (reuniões sem pauta, excesso de redes sociais, interrupções fúteis e procrastinação mascarada). Disfarçam-se de 'ocupação' e ativam circuitos de recompensa rápida e barata no cérebro (loop de dopamina), dando uma falsa e passageira sensação de alívio. No fundo, operam como os maiores ladrões silenciosos do seu progresso, sugando sua energia vital e desviando-o de seus objetivos reais. A longo prazo, a predominância desta esfera resulta em forte estagnação profissional e um profundo sentimento de frustração e vazio.");
 
     forceNewPage();
     addSectionTitle("6. Perfis Comparativos");
-
+    
     const profilesData = [
-      triadPickProfile(25, 10, 65),
-      triadPickProfile(75, 10, 15),
-      triadPickProfile(45, 10, 45),
-      triadPickProfile(30, 60, 10),
-      triadPickProfile(10, 70, 20)
+      triadPickProfile(25, 10, 65), 
+      triadPickProfile(75, 10, 15), 
+      triadPickProfile(45, 10, 45), 
+      triadPickProfile(30, 60, 10), 
+      triadPickProfile(10, 70, 20)  
     ];
-
     profilesData.forEach(p => {
-      let textH = 6;
-      const chartSize = 65;
+      let textH = 6; 
+      const chartSize = 65; 
       const textX = margin + chartSize + 15;
-      const textColW = contentW - chartSize - 20;
+      const textColW = contentW - chartSize - 20; 
+      
       doc.setFontSize(8.5);
-      const subLines = doc.splitTextToSize(p.subtitle, textColW);
+      const subLines = doc.splitTextToSize(p.subtitle, textColW); 
       textH += (subLines.length * 4) + 2;
+      
       doc.setFontSize(9.5);
       const descLines = doc.splitTextToSize(p.desc, textColW);
       textH += (descLines.length * 4.5) + 2;
+      
       doc.setFontSize(9);
       const bodyLines = doc.splitTextToSize(p.texto, textColW);
       textH += (bodyLines.length * 4.5) + 2;
+      
       const cardHeight = Math.max(chartSize + 10, textH + 10);
-      newPageIfNeeded(cardHeight + 8);
+      newPageIfNeeded(cardHeight + 8); 
+      
       const boxY = y;
+      
       doc.setFillColor(248, 250, 252);
       doc.setDrawColor(203, 213, 225);
       doc.roundedRect(margin, boxY, contentW, cardHeight, 2, 2, "FD");
-      doc.setFillColor(colorBlue[0], colorBlue[1], colorBlue[2]);
-      doc.rect(margin, boxY, 3, cardHeight, 'F');
+      
+      // Faixa colorida no topo do perfil (cor predominante)
+      const profileBandColor = getProfileColor(p.nome);
+      doc.setFillColor(profileBandColor[0], profileBandColor[1], profileBandColor[2]);
+      doc.rect(margin, boxY, contentW, 8, 'F'); // Faixa de 8mm no topo
+      
+      doc.rect(margin + 2, boxY + 8, contentW - 4, 0.2, 'F'); // Linha sutil abaixo da faixa
+      
+      doc.setFillColor(11, 99, 206);
+      doc.rect(margin, boxY, 3, cardHeight, 'F'); // Linha esquerda azul
+      
       if (p.chartBase64) {
-        const chartY = boxY + (cardHeight / 2) - (chartSize / 2);
+        const chartY = boxY + 8 + (cardHeight - 8 - chartSize) / 2;
         doc.addImage(p.chartBase64, "PNG", margin + 8, chartY, chartSize, chartSize);
       }
-      let textY = boxY + 8;
+      
+      let textY = boxY + 8 + 5;
+      
       doc.setFont("helvetica", "bold");
       doc.setFontSize(12);
-      doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
+      doc.setTextColor(11, 42, 82);
       doc.text(p.nome, textX, textY);
       textY += 5;
+      
       doc.setFontSize(8.5);
-      doc.setTextColor(colorBlue[0], colorBlue[1], colorBlue[2]);
+      doc.setTextColor(11, 99, 206);
       doc.text(subLines, textX, textY);
       textY += (subLines.length * 4) + 1;
+      
       doc.setFontSize(9.5);
-      doc.setTextColor(colorText[0], colorText[1], colorText[2]);
+      doc.setTextColor(51, 51, 51);
       doc.text(descLines, textX, textY);
       textY += (descLines.length * 4.5) + 1;
+      
       doc.setFont("helvetica", "normal");
       doc.setFontSize(9);
-      doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
+      doc.setTextColor(100, 116, 139);
       doc.text(bodyLines, textX, textY);
-      y = boxY + cardHeight + 6;
+      
+      y = boxY + cardHeight + 6; 
     });
 
     const totalPages = doc.internal.getNumberOfPages();
     for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i);
-      doc.setDrawColor(200, 210, 220);
-      doc.setLineWidth(0.5);
-      doc.line(margin, pageH - 12, pageW - margin, pageH - 12);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(8);
-      doc.setTextColor(colorNavy[0], colorNavy[1], colorNavy[2]);
-      doc.text("Instituto Impulso Coaching de Liderança", margin, pageH - 8);
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
-      doc.text("Desenvolvimento de Alta Performance | Rogério Braga", margin, pageH - 4.5);
-      doc.text(`Página ${i} de ${totalPages}`, pageW - margin, pageH - 8, { align: 'right' });
+      if (i > 1) { 
+        // Rodapé profissional em todas as páginas (exceto capa)
+        doc.setDrawColor(200, 210, 220);
+        doc.setLineWidth(0.5);
+        doc.line(margin, pageH - 12, pageW - margin, pageH - 12);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8);
+        doc.setTextColor(11, 42, 82);
+        doc.text("Instituto Impulso Coaching de Liderança", margin, pageH - 8);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(100, 116, 139);
+        doc.text("Desenvolvimento de Alta Performance | Master Coach Rogério Braga", margin, pageH - 4.5);
+        doc.text(`Página ${i-1} de ${totalPages-1}`, pageW - margin, pageH - 8, { align: 'right' });
+      }
     }
     const safeName = formattedName.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9_]/g, "");
-    const pdfFileName = `GestaoNoTempo_${safeName}.pdf`;
+    const pdfFileName = `GestaoNoTempo: ${safeName}.pdf`;
     return { doc, pdfFileName };
   }
 
+  // 
+  // 🚀 ORQUESTRAÇÃO DE ENVIO AUTOMÁTICO
+  // 
   async function autoSendWithPdf() {
     if (autoSendInProgress || autoSendDone) return;
     autoSendInProgress = true;
     setAutoSendStatus("⏳ Gerando relatório e processando inteligência de dados...", "pending");
+    
     try {
       const data = window._triadeData;
       if (!data) throw new Error("Sem dados.");
@@ -1041,6 +1285,8 @@
       const { doc, pdfFileName } = await generatePdfDocAndFileName();
       const base64 = doc.output("datauristring").split(",")[1];
       const prof = triadPickProfile(data.percentages.A, data.percentages.B, data.percentages.C);
+      
+      // O SEGREDO ESTÁ AQUI: Enviando as variáveis separadas para o Google Script
       const payload = {
         apiKey: API_KEY,
         testId: "triade_v1",
@@ -1050,11 +1296,14 @@
         idade: data.prettyData.idade,
         profissao: data.prettyData.profissao,
         escolaridade: data.prettyData.escolaridade,
+        
+        // Dados separados para a planilha
         percImportancia: data.percentages.B + "%",
         percUrgencia: data.percentages.C + "%",
         percCircunstancia: data.percentages.A + "%",
         vazamentoEnergia: data.energyLeak,
         perfil: prof.nome,
+        
         pdfBase64: base64,
         pdfFileName: pdfFileName,
         sendEmail: true
@@ -1190,6 +1439,7 @@
     elQuestionText.textContent = questions[currentIndex];
     elOptions.innerHTML = "";
     const selected = answers[currentIndex];
+    
     optLabels.forEach((opt) => {
       const div = document.createElement("div");
       div.className = "opt";
@@ -1305,6 +1555,7 @@
     if (!validateIntro()) return null;
     const totals = computeTotals();
     const percentages = computePercentages(totals);
+    
     let energiaPerdida = 70 - percentages.B;
     if(energiaPerdida < 0) energiaPerdida = 0;
     const energyLeak = energiaPerdida.toFixed(1) + "%";
@@ -1316,6 +1567,7 @@
     document.getElementById("barA").style.width = `${percentages.A}%`;
     document.getElementById("barB").style.width = `${percentages.B}%`;
     document.getElementById("barC").style.width = `${percentages.C}%`;
+    
     document.getElementById("totalA").textContent = totals.A;
     document.getElementById("totalB").textContent = totals.B;
     document.getElementById("totalC").textContent = totals.C;
@@ -1344,26 +1596,38 @@
     }
   });
 
+  // Lógica para recomeçar o teste limpando todos os dados
   function restartTest() {
+    // 1. Limpa os dados de entrada
     document.getElementById("name").value = "";
     document.getElementById("whatsapp").value = "";
     document.getElementById("email").value = "";
     document.getElementById("profession").value = "";
     document.getElementById("age").value = "";
     document.getElementById("escolaridade").value = "";
+    
+    // 2. Reseta as respostas e variáveis de controle
     answers.fill(null);
     currentIndex = 0;
     autoSendDone = false;
     emailSendAttempts = 0;
     window._triadeData = null;
+
+    // 3. Esconde mensagens de sucesso/erro anteriores
     document.getElementById("final-success-message").style.display = "none";
     document.getElementById("auto-send-status").textContent = "";
+
+    // 4. Volta para a primeira tela
     showStep(stepIntro);
+    
+    // 5. Garante que os botões de avançar estejam no estado correto
     document.getElementById("btn-next").style.display = "none";
   }
 
+  // Modificando o botão "Voltar e revisar" para atuar como "Recomeçar"
   const btnRestart = document.getElementById("btn-back-quiz");
   if(btnRestart) {
+    // Removemos os eventos antigos clonando o botão
     const newBtn = btnRestart.cloneNode(true);
     btnRestart.parentNode.replaceChild(newBtn, btnRestart);
     newBtn.addEventListener("click", restartTest);
