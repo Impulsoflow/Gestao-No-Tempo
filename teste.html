@@ -838,7 +838,7 @@
     doc.setTextColor(255, 255, 255);
     doc.text(`Emissão: ${new Date().toLocaleDateString("pt-BR")}`, pageW - margin, 30, { align: 'right' });
     
-    y = 8;
+    y = 10;
     function addSectionTitle(text) {
       newPageIfNeeded(18);
       y += 4;
@@ -980,9 +980,9 @@
       doc.setTextColor(colorRGB[0], colorRGB[1], colorRGB[2]);
       newPageIfNeeded(12);
       doc.text(title, margin, y);
-      y += 6;
+      y += 5;
       addParagraph(text, 9.5, 4.8);
-      y += 6; 
+      y += 5; 
     }
     
     addSphereExpl("Esfera Importante (Azul) - Alta Performance e Estado de Flow", [11, 99, 206], "A esfera do Importante reúne as atividades estratégicas que geram resultados consistentes e sustentáveis de curto, médio e longo prazo. É o território dos líderes de sucesso, onde residem os projetos de vida, metas estruturadas, saúde integral e desenvolvimento de relacionamentos. Tarefas bem planejadas nunca se tornam urgentes. Viver nesta esfera é sinônimo de governança, clareza e controle absoluto sobre sua carreira. Quando a maior parte do seu tempo reside aqui, o cérebro opera com frequência no 'Estado de Flow' (fluxo contínuo), maximizando o potencial criativo, o engajamento profundo e a sensação plena de realização e propósito.");
